@@ -50,14 +50,15 @@ function tester() {
   let diag1 = [boxes[0], boxes[4], boxes[8]];
   let diag2 = [boxes[2], boxes[4], boxes[6]];
 
-
   let lines = [row1, row2, row3, col1, col2, col3, diag1, diag2];
   lines.forEach((item) => {
     if (item[0] + item[1] + item[2] == "XXX" && win == false) {
       status.innerHTML = "Congratulations! X is the Winner!";
+      status.setAttribute("class", "you-won");
       win = true;
     } else if (item[0] + item[1] + item[2] == "OOO" && win == false) {
       status.innerHTML = "Congratulations! O is the Winner!";
+      status.setAttribute("class", "you-won");
       win = true;
     } else if (!boxes.includes("") && win == false){
       status.innerHTML = "Draw!";
@@ -72,6 +73,7 @@ function Reset() {
   var botton = document.querySelector("button");
   botton.addEventListener("click", () => {
     status.innerHTML = "Move your mouse over a square and click to play an X or an O";
+    status.removeAttribute("class", "you-won");
     win = false;
     counter = 1;
     boxes = ["", "", "", "", "", "", "", "", ""];
